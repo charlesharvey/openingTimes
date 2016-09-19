@@ -55,17 +55,22 @@
 				this.current_hour = this.date.getHours();
 				this.current_minute = this.date.getMinutes();
 				this.place_is_open = false;
+				this.hoursForToday = this.settings.openingTimes[this.current_day];
 
-				if (typeof  this.settings.openingTimes[this.current_day] == 'object'  ) {
+				if (typeof this.hoursForToday == 'object'  ) {
 
-					this.open_unix_time_today = this.timeStringToDate( this.settings.openingTimes[this.current_day][0]  );
-					this.close_unix_time_today = this.timeStringToDate( this.settings.openingTimes[this.current_day][1]  );
+					if (  this.hoursForToday.length == 2    ) {
+						this.open_unix_time_today = this.timeStringToDate( this.hoursForToday[0]  );
+						this.close_unix_time_today = this.timeStringToDate( this.hoursForToday[1]  );
 
-					// ONLY IF DATE INBETWEEN TWO TIMES DO YOU SET PLACEISOPEN AS TRUE
-					if ( this.date <= this.close_unix_time_today && this.date >= this.open_unix_time_today   ) {
-						this.place_is_open = true;
-					}
-				}	
+						//  IF DATE INBETWEEN TWO TIMES DO YOU SET PLACEISOPEN AS TRUE
+						if ( this.date <= this.close_unix_time_today && this.date >= this.open_unix_time_today   ) {
+							this.place_is_open = true;
+						}
+					} 
+				}	else if ( this.hoursForToday === true  ) {
+					this.place_is_open = true;
+				}
 
 				if (this.place_is_open) {
 					$( this.element ).text( this.settings.openString ).addClass( this.settings.openClass );
