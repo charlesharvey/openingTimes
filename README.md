@@ -1,5 +1,5 @@
 #  Opening Times jQuery Plugin
-### a jQuery plugin to show when your business or organisation is open. 
+### a jQuery plugin to show when your business or organisation is open.
 
 Let people know if your shop is open for business.  Fill in your opening times and a different message will appear to visitors of your site, depending on whether you are currently open or not.
 
@@ -33,14 +33,14 @@ Let people know if your shop is open for business.  Fill in your opening times a
 		openString: "open",  // text to appear when shop is open
 		closedString: "closed", // text to appear when shop is closed
 		openClass: "openClass",  // class name added to element when shop is open
-		closedClass: "closedClass",  // class name added to element when shop is closed
+		closedClass: "closedClass"  // class name added to element when shop is closed
 	});
 	```
 
 4. Write the HTML
 
 	```html
-	<p>We are <span id="open_or_closed"></span>.</p>
+	<p>We are <span id="open_or_closed">...</span>.</p>
 	```
 
 Days of the week should be written in full, in English. If you are closed for the whole day, just remove that day from the openingTimes parameter. e.g.
@@ -57,7 +57,7 @@ Days of the week should be written in full, in English. If you are closed for th
 
 
 If you are open for the whole 24 hours, set the day as true. e.g.
-	
+
 ```javascript
 	$('#open_or_closed').openingTimes({
 		openingTimes: {
@@ -66,4 +66,3 @@ If you are open for the whole 24 hours, set the day as true. e.g.
 		}
 	});
 ```
-

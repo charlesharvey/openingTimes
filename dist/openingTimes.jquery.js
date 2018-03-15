@@ -1,5 +1,5 @@
 /*
- *  openingTimes.jquery.js - v1.0.0
+ *  openingTimes.jquery.js - v1.0.2
  *  jQuery plugin to show when your business or organisation is open.
  *  http://webfactor.co
  *
@@ -22,7 +22,7 @@
 		// minified (especially when both are regularly referenced in your plugin).
 
 		// Create the defaults once
-		var pluginName = "openingTimes",
+		var openingTimes = "openingTimes",
 			defaults = {
 				openString: "open",
 				closedString: "closed",
@@ -41,7 +41,7 @@
 			// future instances of the plugin
 			this.settings = $.extend( {}, defaults, options );
 			this._defaults = defaults;
-			this._name = pluginName;
+			this._name = openingTimes;
 			this.init();
 		}
 
@@ -67,7 +67,7 @@
 						if ( this.date <= this.close_unix_time_today && this.date >= this.open_unix_time_today   ) {
 							this.place_is_open = true;
 						}
-					} 
+					}
 				}	else if ( this.hoursForToday === true  ) {
 					this.place_is_open = true;
 				}
@@ -83,18 +83,18 @@
 				var date = new Date();
 				var hour   = timeString.split(':')[0];
 				var minute  =  timeString.split(':')[1];
-				return date.setHours(hour, minute ,0,0);	
+				return date.setHours(hour, minute ,0,0);
 
 			}
 		} );
 
 		// A really lightweight plugin wrapper around the constructor,
 		// preventing against multiple instantiations
-		$.fn[ pluginName ] = function( options ) {
+		$.fn[ openingTimes ] = function( options ) {
 			return this.each( function() {
-				if ( !$.data( this, "plugin_" + pluginName ) ) {
+				if ( !$.data( this, "plugin_" + openingTimes ) ) {
 					$.data( this, "plugin_" +
-						pluginName, new Plugin( this, options ) );
+						openingTimes, new Plugin( this, options ) );
 				}
 			} );
 		};
